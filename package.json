@@ -1,23 +1,23 @@
 {
-  "name": "aoc22",
-  "version": "1.0.0",
-  "description": "Advent of code challenges 2022",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dappernerddesigns/adevnt-of-code-2022.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/dappernerddesigns/adevnt-of-code-2022/issues"
-  },
-  "homepage": "https://github.com/dappernerddesigns/adevnt-of-code-2022#readme",
-  "dependencies": {
-    "jest": "^29.3.1"
-  }
+    "name": "aoc22",
+    "version": "1.0.0",
+    "description": "Advent of code challenges 2022",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dappernerddesigns/adevnt-of-code-2022.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dappernerddesigns/adevnt-of-code-2022/issues"
+    },
+    "homepage": "https://github.com/dappernerddesigns/adevnt-of-code-2022#readme",
+    "dependencies": {
+        "jest": "^29.3.1"
+    }
 }
