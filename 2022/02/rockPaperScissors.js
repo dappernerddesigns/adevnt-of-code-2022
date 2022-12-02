@@ -12,7 +12,27 @@ const inputPrep = (input) => {
     return hands;
 };
 
-const winnerCalculator = () => {};
+const choices = [
+    {
+        hand: "rock",
+        winsAgainst: "scissors",
+        losesAgainst: "paper",
+        points: 1,
+    },
+    {
+        hand: "paper",
+        winsAgainst: "rock",
+        losesAgainst: "scissors",
+        points: 2,
+    },
+    {
+        hand: "scissors",
+        winsAgainst: "paper",
+        losesAgainst: "rock",
+        points: 3,
+    },
+];
+
 const rockPaperScissors = (input) => {
     let myScore = 0;
 
@@ -40,6 +60,44 @@ const rockPaperScissors = (input) => {
     });
     return myScore;
 };
+
+const riggedRockPaperScissors = (input) => {
+    let myScore = 0;
+
+    input.forEach((round) => {
+        let elfHand = round[0];
+        let myHand = round[1];
+
+        if (elfHand === "A") elfHand = choices[0];
+        if (elfHand === "B") elfHand = choices[1];
+        if (elfHand === "C") elfHand = choices[2];
+
+        if (myHand === "X") {
+            myHand = choices.filter((play) => {
+                return play.hand === elfHand.winsAgainst;
+            })[0];
+        }
+
+        if (myHand === "Y") {
+            myHand = choices.filter((play) => {
+                return play.hand === elfHand.hand;
+            })[0];
+            myScore += 3;
+        }
+        if (myHand === "Z") {
+            myHand = choices.filter((play) => {
+                return play.hand === elfHand.losesAgainst;
+            })[0];
+            myScore += 6;
+        }
+
+        myScore += myHand.points;
+    });
+    return myScore;
+};
+
 const preppedData = inputPrep(data);
-console.log(rockPaperScissors(preppedData));
-module.exports = { rockPaperScissors, inputPrep };
+const answerOne = rockPaperScissors(preppedData);
+const answerTwo = riggedRockPaperScissors(preppedData);
+
+module.exports = { rockPaperScissors, inputPrep, riggedRockPaperScissors };

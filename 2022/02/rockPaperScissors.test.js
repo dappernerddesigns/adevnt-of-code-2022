@@ -1,4 +1,8 @@
-const { rockPaperScissors, inputPrep } = require("./rockPaperScissors");
+const {
+    rockPaperScissors,
+    inputPrep,
+    riggedRockPaperScissors,
+} = require("./rockPaperScissors");
 
 describe("Input modifier", () => {
     test("Function returns an array of pairs", () => {
@@ -58,6 +62,53 @@ C Z`;
         const preparedInput = inputPrep(input);
         const expected = 15;
         const actual = rockPaperScissors(preparedInput);
+        expect(actual).toBe(expected);
+    });
+});
+
+describe("Rigged game", () => {
+    test("Function returns 1 with a rock and a loosing hand", () => {
+        const input = "B X";
+        const preparedInput = inputPrep(input);
+        const expected = 1;
+        const actual = riggedRockPaperScissors(preparedInput);
+        expect(actual).toBe(expected);
+    });
+    test("Function returns 6 with scissors and a draw", () => {
+        const input = "C Y";
+        const preparedInput = inputPrep(input);
+        const expected = 6;
+        const actual = riggedRockPaperScissors(preparedInput);
+        expect(actual).toBe(expected);
+    });
+    test("Function returns 8 with paper and a winning hand", () => {
+        const input = "A Z";
+        const preparedInput = inputPrep(input);
+        const expected = 8;
+        const actual = riggedRockPaperScissors(preparedInput);
+        expect(actual).toBe(expected);
+    });
+    test("Function returns 4 with paper and a draw", () => {
+        const input = "B Y";
+        const preparedInput = inputPrep(input);
+        const expected = 5;
+        const actual = riggedRockPaperScissors(preparedInput);
+        expect(actual).toBe(expected);
+    });
+    test("Function returns 2 with paper and a loss", () => {
+        const input = "C X";
+        const preparedInput = inputPrep(input);
+        const expected = 2;
+        const actual = riggedRockPaperScissors(preparedInput);
+        expect(actual).toBe(expected);
+    });
+    test("Function returns 12 over three rounds", () => {
+        const input = `A Y
+B X
+C Z`;
+        const preparedInput = inputPrep(input);
+        const expected = 12;
+        const actual = riggedRockPaperScissors(preparedInput);
         expect(actual).toBe(expected);
     });
 });
